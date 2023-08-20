@@ -1,0 +1,9 @@
+<nav class="menu" style="display: flex">
+<a style="text-decoration: none; background: none; padding: 0;"  href="/"><h1 style="margin: auto auto auto 0;">{{.Site.Title}}</h1></a>
+<ul style="margin: auto 0 auto auto;">
+{{ range .Site.Menus.main }}
+<li style="display: inline-block"><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+{{ end }}
+</ul>
+</nav>
+<hr/>

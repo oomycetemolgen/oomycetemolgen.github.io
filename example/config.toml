@@ -1,0 +1,59 @@
+baseURL = "//"
+languageCode = "en"
+title = "kmin"
+theme = "kmin" # Typically also others like ["kmin", "kphoto", "matomo"]
+
+copyright = "K.D. Murray"
+
+[author]
+  name = "K.D. Murray"
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[[menu.main]]
+  name = "Home"
+  weight = 1
+  identifier = "home"
+  url = "/"
+[[menu.main]]
+  name = "About"
+  weight = 4
+  identifier = "about"
+  url = "/about/"
+[[menu.main]]
+  name = "Archives"
+  weight = 20
+  identifier = "archives"
+  url = "/post/"
+[[menu.main]]
+  name = "Categories"
+  weight = 40
+  identifier = "categories"
+  url = "/categories/"
+
+[params]
+  debug = false 
+  paginationBatchSize = 24
+  dateFormat = "2006-01-02"
+  mathjax = false   # By default! Will be overridden page-by-page
+  listShowSummary = true
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 1
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = false
+    noClasses = true
+    noHl = true
+    style = 'monokai'
+    tabWidth = 4

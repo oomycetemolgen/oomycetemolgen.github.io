@@ -1,0 +1,44 @@
+{{- define "title" }}{{ .Title }} · {{ .Site.Title }}{{ end -}}
+
+{{- define "content" }}
+{{- $paginator := .Paginate (where .Data.Pages.ByDate.Reverse ".Params.hidden" "!=" true) .Site.Params.paginationBatchSize }}
+<section id="archive" class="archive">
+  {{ if not $paginator.HasPrev -}}
+    {{ if eq .Data.Plural "tags" -}}
+      <div class="archive-title tag">
+        <h2 class="archive-name">{{ .Title }}</h2>
+      </div>
+    {{- else if eq .Data.Plural "categories" -}}
+      <div class="archive-title category">
+        <h2 class="archive-name">{{ .Title }}</h2>
+      </div>
+    {{- end }}
+  {{- end }}
+
+  {{ range $paginator.Pages -}}
+    <div class="articleinlist">
+    <a href="{{ .RelPermalink }}">
+    <h3>{{ with .Date}}<span class="date">{{ .Format $.Site.Params.dateFormat }}</span>&emsp;{{end}}{{ .Title | markdownify }}</h3>
+      {{ if $.Params.listShowSummary | default false }}
+      {{ .Summary }}
+      {{ end }}
+    </a>
+    </div>
+  {{- end }}
+</section>
+<!-- pagination -->
+<nav class="pagination">
+  {{ with $paginator.Prev -}}
+    <a class="prev" href="{{ .URL }}">
+      <i class="iconfont icon-left"></i>
+      <span class="prev-text">{{ T "prevPage" }}</span>
+    </a>
+  {{- end }}
+  {{ with $paginator.Next -}}
+    <a class="next" href="{{ .URL }}">
+      <span class="next-text">{{ T "nextPage" }}</span>
+      <i class="iconfont icon-right"></i>
+    </a>
+  {{- end }}
+</nav>
+{{- end }}

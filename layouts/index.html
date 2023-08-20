@@ -1,0 +1,18 @@
+{{ define "content" }}
+
+{{ .Content }}
+
+{{- $pages := where .Pages.ByDate.Reverse ".Params.hidden" "!=" true -}}
+{{- if .IsHome }}{{ $pages = where ( where .Site.RegularPages.ByDate.Reverse ".Params.onhomepage" "!=" false ) ".Params.hidden" "!=" true }}{{- end -}}
+{{- range (where $pages "Section" "!=" "") -}}
+<div class="articleinlist">
+<a href="{{ .RelPermalink }}">
+<h3>{{ with .Date}}<span class="date">{{ .Format $.Site.Params.dateFormat }}</span>&emsp;{{end}}{{ .Title | markdownify }}</h3>
+  {{ if $.Params.listShowSummary | default false }}
+  {{ .Summary }}
+  {{ end }}
+</a>
+</div>
+{{ end }}
+{{end}}
+
