@@ -1,0 +1,14 @@
+{{- define "title" }}{{ .Title }} · {{ .Site.Title }}{{ end -}}
+
+{{- define "content" }}
+{{ range .Data.Terms }}
+  <a href="{{ .Page.RelPermalink }}"><h3>{{ .Page.Title }}</h3></a>
+  {{- range (first 3 .Pages) -}}
+    <div class="articleinlist">
+    <a href="{{ .RelPermalink }}">
+    <h3>{{ with .Date}}<span class="date">{{ .Format $.Site.Params.dateFormat }}</span>&emsp;{{end}}{{ .Title | markdownify }}</h3>
+    </a>
+    </div>
+  {{- end -}}
+{{ end }}
+{{- end -}}
