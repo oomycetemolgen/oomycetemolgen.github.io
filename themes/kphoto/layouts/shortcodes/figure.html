@@ -1,0 +1,49 @@
+<!--
+Copyright (c) 2021 K D Murray
+MIT Licensed
+-->
+
+{{- $kid := .Get "lightbox_id" | default "main" -}}
+{{- $img := .Page.Resources.GetMatch (.Get "img") -}}
+{{- $mainresize := "2560x jpg q90 lanczos" -}}
+{{- with .Get "mainwidth" -}}
+    {{- $mainresize = printf "%dx jpg q90 lanczos" . -}}
+{{- end -}}
+{{- with .Get "mainheight" -}}
+    {{- $mainresize = printf "x%d jpg q90 lanczos" . -}}
+{{- end -}}
+{{- $main := $img.Resize $mainresize -}}
+
+{{- if not (.Get "nologo" | default false) -}}
+    {{- with $.Site.Params.Get "logo" -}}
+        {{- $logo := resources.Get . -}}
+        {{- /* Find dynamic size of logo watermark  */ -}}
+        {{- $size := math.Round (mul $main.Height 0.10) -}}
+        {{- $size := cond (ge $size 40) ($size) (40.0) -}}
+        {{- $logo = $logo.Resize (printf "%.0fx png" $size) -}}
+
+        {{- /* Find logo positiontion: 10px from edge at bottom left */ -}}
+        {{- $main = $main.Filter (images.Overlay $logo (sub (sub $main.Width $logo.Width) 20) (sub (sub $main.Height $logo.Height) 20) ) -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $thumbresize := "1024x jpg q90 lanczos" -}}
+{{- with .Get "width" -}}
+    {{- $thumbresize = printf "%dx jpg q90 lanczos" . -}}
+{{- end -}}
+{{- with .Get "height" -}}
+    {{- $thumbresize = printf "x%d jpg q90 lanczos" . -}}
+{{- end -}}
+{{- $thumb := $main.Resize $thumbresize -}}
+
+{{- $caption := "" -}}
+{{- with .Get "caption" }}
+  {{- $caption = . -}}
+{{ else }}
+  {{- with $img.Exif }}{{with .Tags.ImageDescription}}{{ $caption = . }}{{ end }}{{ end }}
+{{- end }}
+<div style="display: flex; align-items: center; justify-content: center;">
+<a href="{{ $main.Permalink }}" itemprop="contentUrl" data-lightbox="{{$kid}}" title="{{ $caption }}" class="kphoto-fig">
+	<img itemprop="thumbnail" src="{{ $thumb.Permalink }}" alt="{{ $caption }}" />
+</a>
+</div>

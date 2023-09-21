@@ -1,0 +1,8 @@
+{{ if not ($.Page.Scratch.Get "kphotoloaded") }}
+{{ $.Page.Scratch.Set "kphotoloaded" 1 }}
+<link rel="stylesheet" href="/css/justifiedGallery.min.css" />
+<link rel="stylesheet" href="/css/lightbox.min.css" />
+<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/js/jquery.justifiedGallery.min.js"></script>
+<script type="text/javascript" src="/js/lightbox.min.js"></script>
+{{ end }}

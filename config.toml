@@ -1,4 +1,15 @@
 baseURL = 'http://oomycetemolgen.github.io/'
 languageCode = 'en-us'
 title = 'OMGN'
-theme = [ "kmin", ]
+theme = [ "kmin", "kphoto"]
+
+[[menu.main]]
+  name = "OMGN"
+  weight = 1
+  identifier = "home"
+  url = "/"
+[[menu.main]]
+  name = "Oomycetes"
+  weight = 10
+  identifier = "oomycetes"
+  url = "/about-oomycetes/"

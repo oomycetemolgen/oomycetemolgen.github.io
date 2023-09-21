@@ -1,0 +1,48 @@
+<!--
+Copyright (c) 2021 K D Murray
+
+MIT Licensed
+-->
+{{ $.Page.Scratch.Add "kgallerycount" 1 }}
+{{ $kid := printf "kgalleryid%d" ($.Page.Scratch.Get "kgallerycount") }}
+<div id="{{ $kid }}" itemscope itemtype="http://schema.org/ImageGallery">
+    {{ with ($.Get "match") -}}
+        {{- $files := $.Page.Resources.Match . }}
+        {{- range $img := $files -}}
+            {{- $main := $img.Resize "2560x jpg q90 lanczos" -}}
+
+            {{ with ($.Site.Params.Get "logo") }}
+                {{- $logo := resources.Get ($.Site.Params.Get "logo") -}}
+                {{- if $logo -}}
+                    {{- /* Find dynamic size of logo watermark  */ -}}
+                    {{- $size := math.Round (mul $main.Height 0.10) -}}
+                    {{- $size := cond (ge $size 40) ($size) (40.0) -}}
+                    {{- $logo = $logo.Resize (printf "%.0fx png" $size) -}}
+
+                    {{- /* Find logo positiontion: 10px from edge at bottom left */ -}}
+                    {{- $main = $main.Filter (images.Overlay $logo (sub (sub $main.Width $logo.Width) 20) (sub (sub $main.Height $logo.Height) 20) ) -}}
+                {{- end -}}
+            {{- end -}}
+
+            {{- $thumb := $main.Resize "1024x jpg q90 lanczos" -}}
+
+            {{- $caption := .Name | replaceRE "\\..*" "" | humanize -}}
+	    {{- $caption := "" }}
+            {{- with $img.Exif -}}
+                {{- $caption = $img.Exif.Tags.ImageDescription | default $caption -}}
+            {{- end -}}
+        <a href="{{ $main.Permalink }}" itemprop="contentUrl" data-lightbox="{{$kid}}" title="{{ $caption }}">
+	    <img itemprop="thumbnail" src="{{ $thumb.Permalink }}" alt="{{ $caption }}" />
+	</a>
+        {{- end }}
+    {{- else -}}
+        <!-- If no directory was specified, include any figure shortcodes called within the gallery -->
+      {{ .Inner }}
+    {{- end }}
+</div>
+<script>
+    $("#{{$kid}}").justifiedGallery({
+        rowHeight: {{ $.Get "rowHeight" | default 240 }},
+        lastRow: "center",
+    });
+</script>
