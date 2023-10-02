@@ -15,7 +15,7 @@ MIT Licensed
 {{- $main := $img.Resize $mainresize -}}
 
 {{- if not (.Get "nologo" | default false) -}}
-    {{- with $.Site.Params.Get "logo" -}}
+    {{- with index $.Site.Params "logo" -}}
         {{- $logo := resources.Get . -}}
         {{- /* Find dynamic size of logo watermark  */ -}}
         {{- $size := math.Round (mul $main.Height 0.10) -}}
