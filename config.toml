@@ -4,12 +4,12 @@ title = 'OMGN'
 theme = [ "kmin", "kphoto"]
 
 [[menu.main]]
-  name = "OMGN"
+  name = "Home"
   weight = 1
   identifier = "home"
   url = "/"
 [[menu.main]]
-  name = "Oomycetes"
+  name = "What are Oomycetes?"
   weight = 10
   identifier = "oomycetes"
   url = "/about-oomycetes/"
