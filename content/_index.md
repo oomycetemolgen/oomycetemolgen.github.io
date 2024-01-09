@@ -50,7 +50,11 @@ You can read about our govenerance structure [here](./governance/)
 
 ## [Meetings](/meetings/)
 
+<p style="font-size: 2rem">Please join us in <a href="/meetings/2024/">2024 at Asilomar!</a>. OMGN 2024 will be held immediately before the 32nd Fungal Genetics Conference</p>
+
 We hold annual meetings, often in conjunction with larger, more general Plant
 Pathology conferences. The 2023 meeting was a satellite event to ICPP in Lyon.
 You can read about our past meetings [here](/meetings/).
+
+
 

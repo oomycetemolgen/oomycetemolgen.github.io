@@ -38,7 +38,7 @@ Submit through the registration form below. Word limits: 250 words. **Deadline: 
 
 ## Registration
 
-Registration is via the form below.
+Registration is via the form below (or [click here](https://docs.google.com/forms/d/e/1FAIpQLSeFyxrSSeYzewDLkJqDJnNTZ-Fpc9LaTqzIbbS1y0s_mdDQ5w/viewform)).
 
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeFyxrSSeYzewDLkJqDJnNTZ-Fpc9LaTqzIbbS1y0s_mdDQ5w/viewform?embedded=true" width="640" height="1199" frameborder="0" marginheight="0" marginwidth="0">Loading registration form…</iframe>
 
