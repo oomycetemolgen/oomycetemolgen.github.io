@@ -29,7 +29,7 @@ Grounds for at least 2 nights is required** for the meeting
 registration except for local people who do not need hotel
 accommodation.
 
-Link to on-site hotel booking: <https://genetics-gsa.org/fungal-2024/hotel-and-travel/>
+Link to on-site hotel booking: <https://book.passkey.com/e/50748057>
 
 
 ## Abstract submission
