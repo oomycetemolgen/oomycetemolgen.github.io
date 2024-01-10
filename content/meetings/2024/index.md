@@ -57,7 +57,7 @@ Registration deadline:
 - **Presenter registration deadline, Feb 10, 2024**
 - **General registration deadline, Feb 25, 2024**
 
-Payment will occur via paypal, direct to Paul Morris <pmorris@bgsu.edu>. Please send your registration fee to Paul, and he will provide an invoice (see above: \$350 for PIs, \$250 for postdocs & grad students).
+Payment will occur via paypal, direct to Paul Morris <pmorris@bgsu.edu> or via the payment link <https://paypal.me/OMGN2024>. Please send your registration fee to Paul, and he will provide an invoice (see above: \$350 for PIs, \$250 for postdocs & grad students).
 
 In case of any issues with registration, or for any details not covered on this page, please contact the conference organisers:
 
